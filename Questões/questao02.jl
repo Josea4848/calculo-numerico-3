@@ -1,17 +1,16 @@
 include("../Methods/metodoDeHunge-Kutta.jl")
 using .HungeKuttaModule
 
+global k = 0.002 #Coeficiente de atrito
+global g = 9.8 #Gravidade
+global m = 0.11 #Massa
+global v0 = 8 #Valor da velocidade inicial
+global t0 = 0.1 #Tempo inicial
+global tn = 1 #tempo final
+global h = 0.1 #Passo
+
 function f_t_v(v,t)
-    k = 0.002 #Coeficiente de atrito
-    g = 9.8 #Gravidade
-    m = 0.11 #Massa
-
-    return (mg - k*v*abs(g*t))/m
+    return (m*g - k*g*t*abs(g*t))/m
 end
-
-v0 = 8 #Valor da velocidade inicial
-t0 = 0.1 #Tempo inicial
-tn = 1 #tempo final
-h = 0.1 #Passo
 
 HungeKuttaModule.HkMethod4ord(f_t_v, t0, v0, h, tn)

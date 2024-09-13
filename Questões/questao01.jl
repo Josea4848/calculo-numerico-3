@@ -7,6 +7,11 @@ using .HungeKuttaModule
 include("../Methods/metodoDeEuler.jl")
 using .eulerMethodModule
 
+global x0 = 0 # X inicial
+global y0 = 1 # Y incial
+global h = 0.2 # Passo
+global xn = 1 # X final
+
 #Função f'
 function f_x_y(x,y)
     return ((y^2) - (2x))/y
@@ -16,11 +21,6 @@ end
 function f(x)
     return sqrt(2x + 1)
 end
-
-x0 = 0 # X inicial
-y0 = 1 # Y incial
-h = 0.2 # Passo
-xn = 1 # X final
 
 println("========== Método de Euler ================")
 

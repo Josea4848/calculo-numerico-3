@@ -6,7 +6,7 @@ using Pkg
 Pkg.add("Printf")
 using Printf
 
-#Método de Hunge-Kutta de 3° ordem
+#Método de Hunge-Kutta de 3° ordem de Nystrom
 function HkMethod3ord(f_x_y, x0, y0, h, xn)
     n = (xn - x0)/h
     i = 0
@@ -14,9 +14,9 @@ function HkMethod3ord(f_x_y, x0, y0, h, xn)
     xn = x0
 
     while true
-      k1 = h*f_x_y(xn, yn)
-      k2 = h*f_x_y(xn + h/2, yn + k1/2)
-      k3 = h*f_x_y(xn + h, yn - k1 - 2*k2)
+      k1 = f_x_y(xn, yn)
+      k2 = f_x_y(xn + h/3, yn + h*k1/3)
+      k3 = f_x_y(xn + 2*h/3, yn + 2*h*k2/3)
 
       @printf("i = %d | xn = %f | yn = %f | k1 = %f | k2 = %f | k3 = %f\n", i, xn, yn, k1, k2, k3)
 
@@ -25,7 +25,7 @@ function HkMethod3ord(f_x_y, x0, y0, h, xn)
         break
       end
 
-      yn = yn + (k1 + 4*k2 +k3)/6
+      yn = yn + h*(k1 + 3k3)/4
       xn += h
       i += 1
     end

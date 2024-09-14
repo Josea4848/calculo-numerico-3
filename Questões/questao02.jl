@@ -1,5 +1,5 @@
-include("../Methods/metodoDeHunge-Kutta.jl")
-using .HungeKuttaModule
+include("../Methods/metodoDeRunge-Kutta.jl")
+using .RungeKuttaModule
 
 global k = 0.002 #Coeficiente de atrito
 global g = 9.8 #Gravidade
@@ -13,4 +13,4 @@ function f_t_v(v,t)
     return (m*g - k*g*t*abs(g*t))/m
 end
 
-HungeKuttaModule.HkMethod4ord(f_t_v, t0, v0, h, tn)
+RungeKuttaModule.RkMethod4ord(f_t_v, t0, v0, h, tn)

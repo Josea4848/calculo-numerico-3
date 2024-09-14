@@ -2,8 +2,8 @@ using Pkg
 Pkg.add("Printf")
 using Printf
 
-include("../Methods/metodoDeHunge-Kutta.jl")
-using .HungeKuttaModule
+include("../Methods/metodoDeRunge-Kutta.jl")
+using .RungeKuttaModule
 include("../Methods/metodoDeEuler.jl")
 using .eulerMethodModule
 
@@ -33,6 +33,6 @@ println()
 println("========== Método de Runge-Kutta ==========")
 
 #Erro absoluto com método de Runge-Kutta
-erro_hk = abs(f(1) - HungeKuttaModule.HkMethod3ord(f_x_y, x0, y0, h, xn))
+erro_hk = abs(f(1) - RungeKuttaModule.RkMethod3ord(f_x_y, x0, y0, h, xn))
 
 @printf("Erro absoluto: %f\n", erro_hk)

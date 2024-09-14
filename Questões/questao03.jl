@@ -1,5 +1,5 @@
-include("../Methods/metodoDeHunge-Kutta.jl")
-using .HungeKuttaModule
+include("../Methods/metodoDeRunge-Kutta.jl")
+using .RungeKuttaModule
 
 #constante b (taxa de crescimento)
 global b = 2.9 * 10^(-2)
@@ -12,4 +12,4 @@ function P(t, p)
   return b*p - k*(p^2)
 end
 
-HungeKuttaModule.HkMethod4ord(P, t0, p0, 1, 5)
+RungeKuttaModule.RkMethod4ord(P, t0, p0, 1, 5)
